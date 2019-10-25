@@ -1,0 +1,49 @@
+//
+//  main.cpp
+//  osok
+//
+//  Created by Joshua Holzfurtner on 24.10.19.
+//  Copyright © 2019 Joshua Holzfurtner. All rights reserved.
+//
+
+#include <iostream>
+using namespace std;
+#include <fstream>
+#include <string>
+//---------------------------------------------------------------------------------------
+int my_array[99];
+
+int random(int size) {
+ size =  sizeof(::my_array) / sizeof(int);
+ int array[size];
+ srand((unsigned)time(0));
+ for(int i=0; i<size; i++){
+        array[i] = (rand()%2);
+        //cout << array[i] << endl;
+        ::my_array[i] = array[i];
+ }
+return 0;
+}
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    random(7);
+    cout<<my_array[6]<<endl;
+    std::cout << "Hello, World!\n";
+    std::ofstream file1;
+    file1.open("/Users/joshuaholzfurtner/hallo.txt");
+    file1<<"Was wollen wir da rein machen?"<<endl;
+    file1<<"Was wollen wir da rein machen?";
+    file1.close();
+    std::ifstream file2;
+    std::string line;
+    file2.open("/Users/joshuaholzfurtner/hallo.txt");
+    if(file2.is_open()){
+        while(std::getline(file2,line)){
+            std::cout<<line<<std::endl;
+        }
+    }
+    else{
+        cout<<"ERROR"<<endl;
+    }
+    return 0;
+}
